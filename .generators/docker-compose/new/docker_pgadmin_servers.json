@@ -1,0 +1,20 @@
+---
+conditional:
+  onDependency: postgresql
+actions:
+  to: docker/docker-pgadmin_servers.json
+---
+{
+    "Servers": {
+      "1": {
+        "Name": "Docker Compose",
+        "Group": "Servers",
+        "Port": 5432,
+        "Username": "postgres",
+        "Host": "postgres",
+        "SSLMode": "prefer",
+        "MaintenanceDB": "postgres",
+        "PassFile": "/tmp/pgpassfile"
+      }
+    }
+  }
