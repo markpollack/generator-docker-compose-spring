@@ -2,7 +2,7 @@
 conditional:
   onDependency: postgresql
 actions:
-  to: docker/docker-postgres_init.sql
+  to: docker-postgres_init.sql
 ---
 CREATE DATABASE demo1
     WITH

@@ -2,7 +2,7 @@
 conditional:
   onDependency: postgresql
 actions:
-  to: docker/docker-compose-postgres.yaml
+  to: docker-compose-postgres.yaml
 ---
 version: '3.7'
 
