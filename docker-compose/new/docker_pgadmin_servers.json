@@ -2,7 +2,7 @@
 conditional:
   onDependency: postgresql
 actions:
-  to: docker-pgadmin_servers.json
+  to: docker/docker-pgadmin_servers.json
 ---
 {
     "Servers": {

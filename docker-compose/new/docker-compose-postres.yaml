@@ -2,7 +2,7 @@
 conditional:
   onDependency: postgresql
 actions:
-  to: docker-compose-postgres.yaml
+  to: docker/docker-compose-postgres.yaml
 ---
 version: '3.7'
 
@@ -20,7 +20,6 @@ services:
       PGDATA: "/data/postgres"
     volumes:
        - postgres:/data/postgres
-       - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
     ports:
       - "15432:5432"
     restart: unless-stopped
