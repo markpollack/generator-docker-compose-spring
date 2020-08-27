@@ -4,17 +4,29 @@ This repository contains a generator that supports using docker-compose for serv
 
 If you selected a starter from the Tanzu Starter Service UI that uses this generator, it will have already been executed for you by the Starter Service.
 
-The directory `docker` contains the files created by this generator.  They are created only if the dependency for the `postgresql` driver a dependency of your project.
+The directory `docker` contains the files created by this generator.  They are created only if the dependency for the `postgresql` driver is a dependency in your project.
 
-To execute the generator manually, type `tss docker-compose new`.  To install the generator to your machine, type `tss generator install --go-getter-url=github.com/markpollack/generator-docker-compose-spring
+To install the generator to your machine, type
+
+```
+tss generator install --go-getter-url=github.com/markpollack/generator-docker-compose-spring
+```
+
+To execute the generator manually, type `tss docker-compose new`.
 
 The generator support is currently limited to maven based Maven projects.
 
 # Postgres
 
-The command `dock
+The generator creates a `docker` subdirectory.  In that subdirectory execute the command
 
-Two containers are created, one for the postgres database and one for the pgAdmin GUI
+```
+docker-compose -f docker-compose-postgress.yaml up
+```
+
+This command will create two containers.  One for the postgres database and one for the pgAdmin GUI.  If you encounter an error, you can execute `docker system prune`
+
+## Creating a Database
 
 Access the pgAdmin GUI at `localhost:15433`.  You can access the `psql` CLI by typing:
 
