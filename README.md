@@ -26,40 +26,14 @@ docker-compose -f docker-compose-postgress.yaml up
 
 This command will create two containers.  One for the postgres database and one for the pgAdmin GUI.  If you encounter an error, you can execute `docker system prune`
 
-## Creating a Database
+## The Default Database
 
-Access the pgAdmin GUI at `localhost:15433`.  You can access the `psql` CLI by typing:
+The generator creates the docker-compose configuration and sets the `POSTGRES_DB` to "demo1" which should work fine for demo purposes.
 
-```
-docker exec -it demo_postgres bash
-```
-
-You will see the following output:
-
-```
-root@bda99318078b:/# psql -U postgres
-psql (12.4 (Debian 12.4-1.pgdg100+1))
-Type "help" for help.
-
-postgres=#
-```
-
-From here you can create a database by entering something such as
-
-```
-CREATE DATABASE demo1
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'en_US.utf8'
-    LC_CTYPE = 'en_US.utf8'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
-```
+## Cleanup
 
 One way to stop everything, including unmounting volumes, is to execute
 
 ```
 docker system prune
 ```
-
