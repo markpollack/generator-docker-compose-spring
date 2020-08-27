@@ -57,7 +57,7 @@ CREATE DATABASE demo1
     CONNECTION LIMIT = -1;
 ```
 
-One way to stop everything, including umounting volumes, is to execute
+One way to stop everything, including unmounting volumes, is to execute
 
 ```
 docker system prune
