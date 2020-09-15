@@ -9,10 +9,11 @@ If you selected a starter from the Tanzu Starter Service UI that uses this gener
 
 # Postgres
 
-In the `docker` subdirectory, execute the command:
+Execute the commands:
 
 ```
-docker-compose -f docker-compose-postgress.yaml up
+cd docker
+docker-compose -f docker-compose-postgres.yaml up
 ```
 
 This command will create two containers.  One for the postgres database and one for the pgAdmin GUI.  If you encounter an error, you can execute `docker system prune` and also look to remove volumes created using `docker volume rm <volume-name>`.
