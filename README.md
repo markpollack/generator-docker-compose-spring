@@ -2,33 +2,24 @@
 
 This repository contains a generator that supports using docker-compose for services needed by a Spring Boot application that runs on your local machine.
 
-If you selected a starter from the Tanzu Starter Service UI that uses this generator, it will have already been executed for you by the Starter Service.
+If you selected a starter from the Tanzu Starter Service UI that uses this generator, it will have already been executed for you by the Starter Service and the directory `docker` will contain the files you need to start the services.
 
-The directory `docker` contains the files created by this generator.  They are created only if the dependency for the `postgresql` driver is a dependency in your project.
-
-To install the generator to your machine, type
-
-```
-tss generator install --go-getter-url=github.com/markpollack/generator-docker-compose-spring
-```
-
-To execute the generator manually, type `tss docker-compose new`.
-
-The generator support is currently limited to maven based Maven projects.
+**Supported Services**
+* [Postgres](#Postgres)
 
 # Postgres
 
-The generator creates a `docker` subdirectory.  In that subdirectory execute the command
+In the `docker` subdirectory, execute the command:
 
 ```
 docker-compose -f docker-compose-postgress.yaml up
 ```
 
-This command will create two containers.  One for the postgres database and one for the pgAdmin GUI.  If you encounter an error, you can execute `docker system prune`
+This command will create two containers.  One for the postgres database and one for the pgAdmin GUI.  If you encounter an error, you can execute `docker system prune` and also look to remove volumes created using `docker volume rm <volume-name>`.
 
-## Creating a Database
+A database named `demo` is already created for you to use.  The database `demo` is available on port `15432` with username `postgres` and password `password`.  Access the pgAdmin GUI at `localhost:15433`.
 
-Access the pgAdmin GUI at `localhost:15433`.  You can access the `psql` CLI by typing:
+You can access the `psql` CLI by typing:
 
 ```
 docker exec -it demo_postgres bash
@@ -44,22 +35,14 @@ Type "help" for help.
 postgres=#
 ```
 
-From here you can create a database by entering something such as
+# Manually running the generator
+
+To install the generator to your machine, type
 
 ```
-CREATE DATABASE demo1
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'en_US.utf8'
-    LC_CTYPE = 'en_US.utf8'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
+tss generator install --go-getter-url=github.com/markpollack/generator-docker-compose-spring
 ```
 
-One way to stop everything, including unmounting volumes, is to execute
+To execute the generator manually, type `tss docker-compose new`.
 
-```
-docker system prune
-```
-
+The generator support is currently limited to maven based Maven projects.
